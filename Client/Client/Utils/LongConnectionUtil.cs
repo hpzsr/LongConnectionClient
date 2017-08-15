@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -13,7 +14,7 @@ class LongConnectionUtil
 
     Socket m_socket;
     IPAddress m_ipAddress = IPAddress.Parse("127.0.0.1");
-    int m_ipPort = 10002;
+    int m_ipPort = 10008;
 
     public static LongConnectionUtil getInstance()
     {
@@ -37,12 +38,12 @@ class LongConnectionUtil
         IPEndPoint ipEndPort = new IPEndPoint(m_ipAddress, m_ipPort);
         m_socket.Connect(ipEndPort);
 
-        Console.WriteLine("连接服务器成功");
+        Debug.WriteLine("连接服务器成功");
     }
 
     public void sendmessage(string sendData)
     {
-        Console.WriteLine("发送给服务端消息：" + sendData);
+        Debug.WriteLine("发送给服务端消息：" + sendData);
 
         byte[] bytes = new byte[1024];
         bytes = Encoding.ASCII.GetBytes(sendData);
@@ -59,7 +60,7 @@ class LongConnectionUtil
             int recelong = m_socket.Receive(rece, rece.Length, 0);
             string reces = Encoding.ASCII.GetString(rece, 0, recelong);
 
-            Console.WriteLine("收到服务端消息：" + reces);
+            Debug.WriteLine("收到服务端消息：" + reces);
 
             return reces;
         }

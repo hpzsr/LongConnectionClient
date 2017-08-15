@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using Client.Entity;
+using System.Diagnostics;
 
 namespace Client
 {
@@ -33,7 +34,6 @@ namespace Client
             InitializeComponent();
 
             Entity_code.getInstance().init();
-            LogUtil.getInstance().startRecordLog();
         }
         
         // 登录

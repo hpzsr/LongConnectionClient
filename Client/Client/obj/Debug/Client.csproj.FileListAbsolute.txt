@@ -10,3 +10,13 @@ C:\Users\58225\Desktop\Client\Client\obj\Debug\Client.csprojResolveAssemblyRefer
 C:\Users\58225\Desktop\Client\Client\bin\Debug\Newtonsoft.Json.dll
 C:\Users\58225\Desktop\Client\Client\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\58225\Desktop\Client\Client\bin\Debug\Newtonsoft.Json.xml
+E:\GitHub\LongConnectionClient\Client\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
+E:\GitHub\LongConnectionClient\Client\Client\obj\Debug\Client.Form1.resources
+E:\GitHub\LongConnectionClient\Client\Client\obj\Debug\Client.Properties.Resources.resources
+E:\GitHub\LongConnectionClient\Client\Client\obj\Debug\Client.csproj.GenerateResource.Cache
+E:\GitHub\LongConnectionClient\Client\Client\obj\Debug\Client.exe
+E:\GitHub\LongConnectionClient\Client\Client\obj\Debug\Client.pdb
+E:\GitHub\LongConnectionClient\Client\Client\bin\Debug\Client.exe.config
+E:\GitHub\LongConnectionClient\Client\Client\bin\Debug\Client.exe
+E:\GitHub\LongConnectionClient\Client\Client\bin\Debug\Client.pdb
+E:\GitHub\LongConnectionClient\Client\Client\bin\Debug\Newtonsoft.Json.dll
