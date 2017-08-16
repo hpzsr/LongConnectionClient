@@ -21,11 +21,7 @@ namespace Client
 {
     public partial class Form1 : Form
     {
-        IPAddress ipAddress = IPAddress.Parse("127.0.0.1");
-        //IPAddress ipAddress = IPAddress.Parse("61.147.73.54");
-        int ipPort = 10002;
-        IPEndPoint iPEndPoint;
-        NetListen_Form1 m_netListen = new NetListen_Form1();
+        NetListen_Form1 m_netListen;
 
         int temp = 0;
 
@@ -33,58 +29,67 @@ namespace Client
         {
             InitializeComponent();
 
-            Entity_code.getInstance().init();
+            Control.CheckForIllegalCrossThreadCalls = false;
+
+            m_netListen = new NetListen_Form1();
+            m_netListen.m_parent = this;
+
+            this.button_duankai.Enabled = false;
+            this.button_fasong.Enabled = false;
         }
         
-        // 登录
+        // 连接
         private void button1_Click(object sender, EventArgs e)
         {
-            LongConnectionUtil.getInstance().Connection();
-
-
-            //JObject jo = new JObject();
-            //jo.Add("tag", "Login");
-            //jo.Add("account", textBox_name.Text);
-            //jo.Add("psw", textBox_psw.Text);
-
-            //NetUtil.getInstance().reqNet(m_netListen, "Login", jo.ToString());
-
-            //// \r\n换行
-            //LogUtil.getInstance().addLog("你好\r\n\r\n");
-
-            //Console.WriteLine(DateTime.Now.ToString());
+            LongConnectionUtil.getInstance().Connection(m_netListen);
+            this.button_lianjie.Enabled = false;
+            this.button_duankai.Enabled = true;
+            this.button_fasong.Enabled = true;
         }
 
-        // 注册
+        // 断开
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.button_lianjie.Enabled = true;
+            this.button_duankai.Enabled = true;
+            this.button_fasong.Enabled = false;
+
+            LongConnectionUtil.getInstance().stopConncetion();
+        }
+
+        // 发送
         private void button2_Click(object sender, EventArgs e)
         {
-            //for (int i = 0; i <= 20; i++)
-            {
-                LongConnectionUtil.getInstance().sendmessage((++temp).ToString());
-            }
+            string backData = this.textBox_send.Text;
+            this.listBox_chat.Items.Add("        " + backData);
             
+            LongConnectionUtil.getInstance().sendmessage(backData);
 
-            //JObject jo = new JObject();
-            //jo.Add("tag", "Register");
-            //jo.Add("account", textBox_name.Text);
-            //jo.Add("psw", textBox_psw.Text);
+        }
 
-            //NetUtil.getInstance().reqNet(m_netListen, "Register", jo.ToString());
-
-            //LogUtil.getInstance().stopRecordLog();
+        public void receiveMsg(string str)
+        {
+            this.listBox_chat.Items.Add(str);
         }
     }
 
     class NetListen_Form1 : NetListen
     {
+        public Form1 m_parent;
+
         override public void onNetListen(string tag, string data)
         {
             Console.WriteLine(data);
+            m_parent.receiveMsg(data);
         }
 
         override public void onNetListenError(string tag)
         {
-            Console.WriteLine("网络请求出错：tag = " + tag);
+            //Console.WriteLine("网络请求出错：tag = " + tag);
+
+            //m_parent.button_lianjie.Enabled = true;
+            //m_parent.button_duankai.Enabled = false;
+            //m_parent.button_fasong.Enabled = false;
         }
     }
 }
