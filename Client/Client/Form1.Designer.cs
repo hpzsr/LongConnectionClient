@@ -93,6 +93,7 @@
             this.Controls.Add(this.button_lianjie);
             this.Name = "Form1";
             this.Text = "客户端";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -51,7 +51,7 @@ namespace Client
         private void button3_Click(object sender, EventArgs e)
         {
             this.button_lianjie.Enabled = true;
-            this.button_duankai.Enabled = true;
+            this.button_duankai.Enabled = false;
             this.button_fasong.Enabled = false;
 
             LongConnectionUtil.getInstance().stopConncetion();
@@ -71,10 +71,16 @@ namespace Client
         {
             this.listBox_chat.Items.Add(str);
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Debug.WriteLine("窗口关闭");
+            LongConnectionUtil.getInstance().stopConncetion();
+        }
     }
 
     class NetListen_Form1 : NetListen
-    {
+    { 
         public Form1 m_parent;
 
         override public void onNetListen(string tag, string data)

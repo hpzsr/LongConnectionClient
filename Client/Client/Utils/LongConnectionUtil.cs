@@ -12,7 +12,7 @@ class LongConnectionUtil
 {
     static LongConnectionUtil s_instance = null;
 
-    Socket m_socket;
+    Socket m_socket = null;
     //IPAddress m_ipAddress = IPAddress.Parse("222.73.65.206");
     //int m_ipPort = 10103;
     IPAddress m_ipAddress = IPAddress.Parse("127.0.0.1");
@@ -65,7 +65,10 @@ class LongConnectionUtil
     {
         m_isStart = false;
 
-        m_socket.Close();
+        if (m_socket != null)
+        { 
+            m_socket.Close();
+        }
     }
 
     public void sendmessage(string sendData)
