@@ -15,8 +15,8 @@ class LongConnectionUtil
     Socket m_socket = null;
     //IPAddress m_ipAddress = IPAddress.Parse("222.73.65.206");
     //int m_ipPort = 10103;
-    IPAddress m_ipAddress = IPAddress.Parse("127.0.0.1");
-    int m_ipPort = 10008;
+    IPAddress m_ipAddress = IPAddress.Parse("192.168.191.2");
+    int m_ipPort = 10103;
 
     NetListen m_netListen;
     bool m_isStart = false;

@@ -61,6 +61,7 @@ namespace Client
         private void button2_Click(object sender, EventArgs e)
         {
             string backData = this.textBox_send.Text;
+            this.textBox_send.Text = "";
             this.listBox_chat.Items.Add("        " + backData);
             
             LongConnectionUtil.getInstance().sendmessage(backData);
